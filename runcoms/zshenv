@@ -9,3 +9,15 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# Kill GlobalProtect VPN
+function unloadGlobalProtect {
+  launchctl unload -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangpa.plist
+  launchctl unload -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangps.plist
+}
+
+# Start GlobalProtect VPN
+function loadGlobalProtect {
+  launchctl load -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangpa.plist
+  launchctl load -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangps.plist
+}
