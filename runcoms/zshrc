@@ -23,9 +23,9 @@ fi
 export PATH=/opt/homebrew/bin:$PATH
 
 # chruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.3.0
+# source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+# chruby ruby-3.3.0
 
 # NVM
 
@@ -40,8 +40,9 @@ eval "$(jenv init -)"
 # Aliases
 alias rm='trash'
 
-alias python="$(pyenv which python)"
-alias pip="$(pyenv which pip)"
+# python
+# alias python="$(pyenv which python)"
+# alias pip="$(pyenv which pip)"
 
 # fastlane
 export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD="ejar-erpk-qrnj-dpey"
@@ -51,4 +52,11 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # asdf
 
-# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# go
+
+export GOROOT="$(asdf where golang)/go/"
+export GOPATH=$(go env GOPATH)
+export PATH="$PATH:$(go env GOPATH)/bin"
+export GOBIN="$(go env GOPATH)/bin"
